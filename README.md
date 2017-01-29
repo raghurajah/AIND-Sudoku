@@ -3,17 +3,30 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: Naked Twins become yet another base strategy to reduce the search space,
+before actually performing the search. In my implementation, I have applied
+the naked_twins call along with the eliminate and only_choice strategy calls.
+This reduces the search space and then this is sent into the recursive DFS
+to traverse the tree. The implementation of the strategy is pretty straightforward.
+We walk through each unit and identify boxes that are twins (two digit values, that
+are the same). Once the twins are identified, we traverse the unit and remove
+the twin values from the peers within this unit.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: Diagonal sudoku are additional constraints imposed on possible values
+for a box. There are two diagonal units - forward and backward. We simply add
+these units into the unitlist, so when the peers are calculated, this is considered
+and added as peers to box that intersect with the diagonal unit. The boxes that
+intersect with the diagonals (except the middle one - E5), now have 26 peers
+instead of 20. The middle one E5 has 32 peers. Naturally, not all normal sudoku will
+have solutions with diagonal constraints, only a subset will.   
 
 ### Install
 
 This project requires **Python 3**.
 
-We recommend students install [Anaconda](https://www.continuum.io/downloads), a pre-packaged Python distribution that contains all of the necessary libraries and software for this project. 
+We recommend students install [Anaconda](https://www.continuum.io/downloads), a pre-packaged Python distribution that contains all of the necessary libraries and software for this project.
 Please try using the environment we provided in the Anaconda lesson of the Nanodegree.
 
 ##### Optional: Pygame
